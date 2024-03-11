@@ -1,0 +1,88 @@
+
+  .container {
+
+    width: 100%;
+
+    max-width: 400px;
+
+    margin: 30px auto;
+
+    padding: 20px;
+
+    background: #fff;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  }
+
+  h2 {
+
+    text-align: center;
+
+    color: #333;
+
+  }
+
+  form {
+
+    margin-top: 20px;
+
+  }
+
+  form label {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #666;
+
+  }
+
+  form input[type="text"],
+
+  form input[type="password"] {
+
+    width: 100%;
+
+    padding: 10px;
+
+    margin-bottom: 20px;
+
+    border: 1px solid #ddd;
+
+    box-sizing: border-box; /* So padding doesn't affect width */
+
+  }
+
+  form button {
+
+    width: 100%;
+
+    padding: 10px;
+
+    background: #5cb85c;
+
+    border: none;
+
+    color: white;
+
+    cursor: pointer;
+
+  }
+
+  form button:hover {
+
+    background: #4cae4c;
+
+  }
+
+  .login-link {
+
+    display: block;
+
+    text-align: center;
+
+    margin-top: 20px;
+
+  }
