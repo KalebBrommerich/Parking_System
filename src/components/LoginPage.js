@@ -44,13 +44,13 @@ const LoginPage = () => {
             <div className="container">
                 <h2>Login</h2>
                 <form action="Login" onSubmit={submitForm}>
-                    <label htmlFor="email">Email:</label>
-                    <input type="text" id="username" name="email" required />
+                    <label htmlFor="email">StarID:</label>
+                    <input type="text" id="username" name="starid" required />
                     <label fnpmor="password">Password:</label>
                     <input type="password" id="password" name="password" required/>
                     <a href="forgotpassword.html" className="forgotpassword-link">Forgot Password?</a>
                     <hr/>
-                    <a href="demo1.html" className="create-account">Create Account</a>
+
                     <hr/>
                     <button type="submit" background-color="blue">Login</button>
                 </form>
