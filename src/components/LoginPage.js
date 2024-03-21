@@ -15,19 +15,25 @@ const LoginPage = () => {
     
 
     const  submitForm =  (e) => {
-        console.log("1234");
         e.preventDefault();
         try {
-            const username ="user1";
-            const password = "password1";
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            console.log(username+ " "+ password)
+            //Don't know how to not use localhost, will need to change this eventually
             const response =  axios.post('http://localhost:5000/api/login', { username, password });
-            //if fail, it will give error code 401. idk how to handle that for now
-            console.log("adfas" + response);
+            //if login bad, it will give error code 401. idk how to handle that for now
+            console.log("Response: " + response.status);
+
+            if(response )
             navigate('/');
         } catch (error) {
             if (error.response.status === 404) {
                 console.error('Endpoint not found:', error.response.config.url);
-            } else {
+            } else  if (error.response.status === 401) {
+                console.error('bad password', error.response.config.url);
+            }
+            else {
                 console.error('An error occurred:', error.message);
             }
         }
@@ -38,13 +44,13 @@ const LoginPage = () => {
             <div className="container">
                 <h2>Login</h2>
                 <form action="Login" onSubmit={submitForm}>
-                    <label for="email">Email:</label>
-                    <input type="text" id="email" name="email" required />
+                    <label htmlFor="email">Email:</label>
+                    <input type="text" id="username" name="email" required />
                     <label fnpmor="password">Password:</label>
                     <input type="password" id="password" name="password" required/>
-                    <a href="forgotpassword.html" class="forgotpassword-link">Forgot Password?</a>
+                    <a href="forgotpassword.html" className="forgotpassword-link">Forgot Password?</a>
                     <hr/>
-                    <a href="demo1.html" class="create-account">Create Account</a>
+                    <a href="demo1.html" className="create-account">Create Account</a>
                     <hr/>
                     <button type="submit" background-color="blue">Login</button>
                 </form>

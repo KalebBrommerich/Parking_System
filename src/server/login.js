@@ -19,7 +19,7 @@ router.post('/login', (req, res) => {
         // Generate and return a JWT token 
         const token = generateToken(user);
         console.log("Good")
-        res.json({ success: true, token });
+        res.status(200).json({ success: true, token });
     } else {
         console.log("Bad")
         res.status(401).json({ success: false, message: 'Invalid username or password' });

@@ -10,7 +10,7 @@ const app = express();
 const router = express.Router();
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 5000;
-const login = require('./server/routes/login');
+const login = require('./server/login');
 const cors = require('cors');
 
 app.use(bodyParser.json());
