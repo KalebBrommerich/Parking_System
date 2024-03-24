@@ -14,14 +14,14 @@ const LoginPage = () => {
     // };
     
 
-    const  submitForm =  (e) => {
+    const  submitForm = async (e) => {
         e.preventDefault();
         try {
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
             console.log(username+ " "+ password)
             //Don't know how to not use localhost, will need to change this eventually
-            const response =  axios.post('http://localhost:5000/api/login', { username, password });
+            const response = await axios.post('http://localhost:5000/api/login', { username, password });
             //if login bad, it will give error code 401. idk how to handle that for now
             console.log("Response: " + response.status);
 
