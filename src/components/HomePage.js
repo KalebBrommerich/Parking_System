@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/HomePage.css';
@@ -14,7 +15,13 @@ const HomePage = () => {
     const addVehicle = ({type, year}) => {
         //setVehicles([<Vehicle type={"Buick Century"} year={"2001"}/>, ...vehicles]);
     }
-
+    const  generateCars = async (e) => {
+        //temp, get from token?
+        const username = "rt3221tp"
+        //returns JSON
+        const generatedVehicles = await axios.post('http://localhost:5000/api/genCars', { username });
+        console.log(generatedVehicles.data)
+    }
     return (
         <div className='main'>
             <div className='header'>
@@ -25,6 +32,8 @@ const HomePage = () => {
                 <div className='vehicles-header'>
                     <h1>Vehicles:</h1>
                     <button onClick={() => {navigate('/add')}}>+</button>
+                    <button onClick={() => {generateCars()}}>Test</button>
+
                 </div>
 
                 {vehicles}
