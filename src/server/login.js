@@ -9,22 +9,15 @@ var con = mysql.createConnection({
   });
   
 
-  
-// Dummy user database (replace with your actual user authentication logic)
-const users = [
-    { id: 1, username: 'user1', password: 'password1' },
-    { id: 2, username: 'user2', password: 'password2' }
-];
-
 // Route to handle login requests
 router.post('/login', async (req, res) => {
-
-    // con.connect(function(err) { 
-    //     if (err){
-    //         console.log(err);
-    //     }else console.log("Connected!");
-    //   });
     console.log('entered login')
+
+    con = mysql.createConnection({
+        host: "localhost",
+        user: "admin",
+        password: "1234"
+    })
     const { username, password } = req.body;
     console.log(username + password);
     // Check if the user exists in the dummy user database
@@ -59,17 +52,12 @@ router.post('/login', async (req, res) => {
         console.log("Error sql" + error)
 
     }
-    if (user) {
-        // Generate and return a JWT token 
-        
-    } else {
-       
-    }
-    
+    con.end()
 });
 
 // Dummy token generation function 
 function generateToken(user) {
+    console.log(user)
     return user;
 }
 

@@ -25,8 +25,8 @@ const LoginPage = () => {
             //if login bad, it will give error code 401. idk how to handle that for now
             console.log("Response: " + response.status);
 
-            if(response )
-            navigate('/');
+            if(response)
+                navigate('/');
         } catch (error) {
             if (error.response.status === 404) {
                 console.error('Endpoint not found:', error.response.config.url);
