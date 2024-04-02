@@ -14,8 +14,9 @@ router.post('/genCars', async (req, res) => {
     const {username} = req.body; 
     //console.log(username)
     con.query("use Parking;");
-    sqlResult =  await new Promise((resolve, reject) => {
-        con.query(`select * from carInfo where (username = '${username}');`
+    sqlResultPending =  await new Promise((resolve, reject) => {
+        //need to do for all tables
+        con.query(`select * from pendingCars where (username = '${username}');`
             , (err, result) => {
                 if (err) {
                   reject(err);
@@ -28,7 +29,37 @@ router.post('/genCars', async (req, res) => {
                 }
         });    
      })
-    res.send(JSON.stringify(sqlResult))
+     sqlResultAccepted =  await new Promise((resolve, reject) => {
+      //need to do for all tables
+      con.query(`select * from pendingCars where (username = '${username}');`
+          , (err, result) => {
+              if (err) {
+                reject(err);
+              }
+              else {
+                  // result.forEach(r => {
+                  //     console.log(r)
+                  // });
+                resolve(result);
+              }
+      });    
+   })
+   sqlResultRejected =  await new Promise((resolve, reject) => {
+    //need to do for all tables
+    con.query(`select * from pendingCars where (username = '${username}');`
+        , (err, result) => {
+            if (err) {
+              reject(err);
+            }
+            else {
+                // result.forEach(r => {
+                //     console.log(r)
+                // });
+              resolve(result);
+            }
+    });    
+ })
+    res.send(JSON.stringify(sqlResultPending) + " " + JSON.stringify(sqlResultAccepted)+ " " + JSON.stringify(sqlResultRejected))
 })
          
 module.exports = router;
