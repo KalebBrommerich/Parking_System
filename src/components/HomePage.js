@@ -18,9 +18,68 @@ const HomePage = () => {
     const  generateCars = async (e) => {
         //temp, get from token?
         const username = "rt3221tp"
-        //returns JSON
+        //returns JSON in format pending <space> accepted <space> rejected
         const generatedVehicles = await axios.post('http://localhost:5000/api/genCars', { username });
         console.log(generatedVehicles.data)
+    }
+    const  generateCarsAdmin = async (e) => {
+        //temp, get from token?
+        const username = "rt3221tp"
+        //returns JSON of car tables
+        var pendingVehicles = await axios.post('http://localhost:5000/api/pendingCarsAdmin');
+        var acceptVehicles = await axios.post('http://localhost:5000/api/acceptedCarsAdmin');
+        var rejectVehicles = await axios.post('http://localhost:5000/api/rejectedCarsAdmin');
+        console.log(pendingVehicles.data)
+        console.log(acceptVehicles.data)
+        console.log(rejectVehicles.data)
+    }
+    const acceptCar = async (e) => {
+        const username = 'testuser'
+        const plate = '215BG2'
+        const make = 'Ford'
+        const model = 'Fusion'
+        const color = 'Black'
+        const state = 'MN'
+        const permitNum= '123456'
+        console.log("accepting car...")
+        const acceptCarStatus = await axios.post('http://localhost:5000/api/accept', {username,plate,make,model,color,state,permitNum});
+        console.log("car accepted")
+    }
+    const rejectCar = async (e) => {
+        const username = 'testuser'
+        const plate = '215BG2'
+        const make = 'Ford'
+        const model = 'Fusion'
+        const color = 'Black'
+        const state = 'MN'
+        const permitNum= '123456'
+        console.log("rejecting car...")
+        const acceptCarStatus = await axios.post('http://localhost:5000/api/reject', {username,plate,make,model,color,state,permitNum});
+        console.log(acceptCarStatus)
+    }
+    const acceptToReject = async (e) => {
+        const username = 'testuser'
+        const plate = '215BG2'
+        const make = 'Ford'
+        const model = 'Fusion'
+        const color = 'Black'
+        const state = 'MN'
+        const permitNum= '123456'
+        console.log("Moving car from accepting to reject...")
+        const acceptCarStatus = await axios.post('http://localhost:5000/api/acceptToReject', {username,plate,make,model,color,state,permitNum});
+        console.log("car moved")
+    }
+    const rejectToAccept = async (e) => {
+        const username = 'testuser'
+        const plate = '215BG2'
+        const make = 'Ford'
+        const model = 'Fusion'
+        const color = 'Black'
+        const state = 'MN'
+        const permitNum= '123456'
+        console.log("Moving car from reject to accepting...")
+        const acceptCarStatus = await axios.post('http://localhost:5000/api/rejectToAccept', {username,plate,make,model,color,state,permitNum});
+        console.log("car moved")
     }
     return (
         <div className='main'>
@@ -32,7 +91,12 @@ const HomePage = () => {
                 <div className='vehicles-header'>
                     <h1>Vehicles:</h1>
                     <button onClick={() => {navigate('/add')}}>+</button>
-                    <button onClick={() => {generateCars()}}>Test</button>
+                    <button onClick={() => {generateCarsAdmin()}}>Test</button>
+                    <button onClick={() => {acceptCar()}}>1</button>
+                    <button onClick={() => {rejectCar()}}>2</button>
+                    <button onClick={() => {rejectToAccept()}}>3</button>
+                    <button onClick={() => {acceptToReject()}}>4</button>
+
 
                 </div>
 
