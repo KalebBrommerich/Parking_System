@@ -44,5 +44,37 @@ router.post('/add', async (req, res) => {
     );
 });
   
+router.post('/update', async (req, res) => {
+  const {token, plate, make, model, color, state, originalLiscense } = req.body;
+  
+  // validate user:
+  const validation = tokenValidator.validateToken(token);
+  if (!validation) { // invalid token
+    res.status(401).json({ success: false, message: 'Invalid token' });
+    return;
+  }
+  
+  const username = validation.username;
+
+  con.query("use Parking;");
+  sqlResult =  await new Promise((resolve, reject) => {
+      con.query(`UPDATE cars SET plate = '${plate}', make = '${make}', model = '${model}', color = '${color}', state = '${state}', status = 'pending' WHERE username = '${username}' AND plate = '${originalLiscense}';`
+      , (err, result) => {
+          if (err) {
+            reject(err);
+          }
+          else {
+            resolve(result);
+          }
+      });    
+  }).then(
+    (result) => {
+      res.sendStatus(200);
+    },
+    (error) => {
+      res.status(401).json({ success: false, message: 'Duplicate entry' });
+    }
+  );
+});
 
 module.exports = router;

@@ -41,6 +41,6 @@ router.post('/genCars', async (req, res) => {
      });
      
     res.send(JSON.stringify(sqlResultPending))
-})
+});
          
 module.exports = router;

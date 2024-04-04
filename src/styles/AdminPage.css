@@ -1,0 +1,78 @@
+
+.admin-vehicle {
+  display: flex;
+  border: 1px solid black;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 70%;
+  align-self: center;
+}
+
+
+.admin-vehicle > .modify-button {
+  width: 30px;
+  height: 30px;
+}
+
+.admin-vehicle p {
+  font-size: 15px;
+  font-weight: bold;
+  padding-left: 10px;
+}
+
+.approve-button {
+  width: 30px;
+  height: 30px;
+  align-self: center;
+  margin-right: 15px;
+  border: 2px solid black;
+  border-radius: 50%;
+  background-color: lightgreen;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.approve-button:hover {
+  background-color: rgb(86, 180, 86);
+}
+
+.deny-button {
+  width: 30px;
+  height: 30px;
+  align-self: center;
+  margin-right: 15px;
+  border: 2px solid black;
+  border-radius: 50%;
+  background-color: lightcoral;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.deny-button:hover {
+  background-color: rgb(197, 84, 84);
+}
+
+.details-button {
+  width: 30px;
+  height: 30px;
+  align-self: center;
+  margin-right: 15px;
+  border: 2px solid black;
+  border-radius: 50%;
+  background-color: lightyellow;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.details-button:hover {
+  background-color: #fdfa72;
+}
+
+.accepted-denied-container {
+  display: flex;
+  width: 100%;
+  height: auto;
+}

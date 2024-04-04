@@ -55,7 +55,7 @@ h1 {
 
 .vehicles-header h1 {
     flex: 1;
-    font-size: min(8vw, 3em);
+    font-size: min(8vw, 2.5em);
 }
 
 .vehicles-header button {

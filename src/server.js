@@ -12,9 +12,10 @@ const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 5000;
 const login = require('./server/login');
 const genCars = require('./server/generateCars');
-const genCarsAdmin = require('./server/generateCarsAdmin')
-const add = require('./server/addCar')
-const acceptReject = require('./server/adminAcceptReject')
+const genCarsAdmin = require('./server/generateCarsAdmin');
+const add = require('./server/addUpdateCar');
+const acceptReject = require('./server/adminAcceptReject');
+
 const cors = require('cors');
 
 app.use(bodyParser.json());
@@ -25,11 +26,11 @@ app.use('/api', login);
 
 app.use('/api', genCars);
 
-app.use('/api', genCarsAdmin)
+app.use('/api', genCarsAdmin);
 
-app.use('/api', add)
+app.use('/api', add);
 
-app.use('/api', acceptReject)
+app.use('/api', acceptReject);
 
 
 app.listen(PORT, () => {
