@@ -1,10 +1,13 @@
 const express = require('express');
+const jwt = require('jsonwebtoken');
 const router = express.Router();
-const mysql = require('mysql')
+const mysql = require('mysql');
+const secretKey = '182397yasdbhp9g1280vu7gyfasdsdoy8bv6q9b7viubsado8231bv7898'; // this is really bad, should be in env, but here for testing
+
 
 var con = mysql.createConnection({
     host: "localhost",
-    user: "admin",
+    user: "test",
     password: "1234"
   });
   
@@ -15,7 +18,7 @@ router.post('/login', async (req, res) => {
 
     con = mysql.createConnection({
         host: "localhost",
-        user: "admin",
+        user: "test",
         password: "1234"
     })
     const { username, password } = req.body;
@@ -27,8 +30,8 @@ router.post('/login', async (req, res) => {
         con.query("use Parking;");
         const sqlResult = con.query(`
         select * from login
-        where (username = '${username}') and (password = '${password}');
-        `, function (err, result) {
+        where (username = '${username}') and (password = '${password}');`, 
+        function (err, result) {
             if (err) console.log("errorsql")
             else if(result.length > 0){
                 console.log("good query pass found")
@@ -57,8 +60,9 @@ router.post('/login', async (req, res) => {
 
 // Dummy token generation function 
 function generateToken(user) {
-    console.log(user)
-    return user;
+    const token = jwt.sign({username: user}, secretKey, { expiresIn: '2h' });
+    console.log("token: " + token);
+    return token;
 }
 
 module.exports = router;

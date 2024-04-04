@@ -15,6 +15,7 @@ use Parking;
 ALTER USER 'admin'@'localhost' IDENTIFIED WITH mysql_native_password BY '1234';
 
 insert into login values
+  ('admin', 'admin'),
   ('jp4356rt','password1'),
   ('at4466up','password2'),
   ('rt3221tp','password3'),
@@ -23,8 +24,8 @@ insert into login values
 select * from login
 where (username = 'jp4356rt') and (password = 'password1');
 
-drop table if exists `pendingCars`;
-create table `pendingCars`(
+drop table if exists `cars`;
+create table `cars`(
 `username` varchar(50) not null,
 `plate` varchar(8) not null,
 `make` varchar(20) not null,
@@ -32,29 +33,6 @@ create table `pendingCars`(
 `color` varchar(15) not null,
 `state` varchar(2) not null,
 `permitNum` varchar(10) not null,
-primary key(`plate`,`username`,`make`,`model`,`color`,`state`,`permitNum`));
-
-drop table if exists `acceptedCars`;
-create table `acceptedCars`(
-`username` varchar(50) not null,
-`plate` varchar(8) not null,
-`make` varchar(20) not null,
-`model` varchar(15) not null,
-`color` varchar(15) not null,
-`state` varchar(2) not null,
-`permitNum` varchar(10) not null,
-primary key(`plate`,`username`,`make`,`model`,`color`,`state`,`permitNum`));
-
-drop table if exists `rejectedCars`;
-create table `rejectedCars`(
-`username` varchar(50) not null,
-`plate` varchar(8) not null,
-`make` varchar(20) not null,
-`model` varchar(15) not null,
-`color` varchar(15) not null,
-`state` varchar(2) not null,
-`permitNum` varchar(10) not null,
-primary key(`plate`,`username`,`make`,`model`,`color`,`state`,`permitNum`));
-
-
+`status` varchar(10) not null,
+primary key(`plate`,`username`,`make`,`model`,`color`,`state`,`permitNum`, `status`));
 

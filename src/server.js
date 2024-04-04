@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 5000;
 const login = require('./server/login');
 const genCars = require('./server/generateCars');
 const genCarsAdmin = require('./server/generateCarsAdmin')
-const addModify = require('./server/addModifyCar')
+const add = require('./server/addCar')
 const acceptReject = require('./server/adminAcceptReject')
 const cors = require('cors');
 
@@ -27,7 +27,7 @@ app.use('/api', genCars);
 
 app.use('/api', genCarsAdmin)
 
-app.use('/api', addModify)
+app.use('/api', add)
 
 app.use('/api', acceptReject)
 
