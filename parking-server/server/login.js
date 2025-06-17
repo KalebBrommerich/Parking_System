@@ -1,7 +1,7 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const router = express.Router();
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const accessDB = require('./Database/accessDB');
 const secretKey = '182397yasdbhp9g1280vu7gyfasdsdoy8bv6q9b7viubsado8231bv7898'; // this is really bad, should be in env, but here for testing
 

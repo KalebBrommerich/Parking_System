@@ -22,7 +22,7 @@ const AdminPage = () => {
         //returns JSON in format pending <space> accepted <space> rejected
 
         try {
-            const generatedVehicles = await axios.post('http://199.17.162.16:5000/api/genCarsAdmin', { token });
+            const generatedVehicles = await axios.post('/api/genCarsAdmin', { token });
             
             // Clear UI:
             let pending = [];
@@ -124,7 +124,7 @@ const AdminVehicle = ({username, type, liscensePlate, color, state, permitNum, a
     const acceptVehicle = async () => {
         try {
             const token = sessionStorage.getItem('token');
-            const generatedVehicles = await axios.post('http://199.17.162.16:5000/api/accept', { token, user: username, plate: liscensePlate });
+            const generatedVehicles = await axios.post('/api/accept', { token, user: username, plate: liscensePlate });
             window.location.reload();
         } catch (error) {
             if (error.response.status === 404) {
@@ -142,7 +142,7 @@ const AdminVehicle = ({username, type, liscensePlate, color, state, permitNum, a
     const rejectVehicle = async () => {
         try {
             const token = sessionStorage.getItem('token');
-            const generatedVehicles = await axios.post('http://199.17.162.16:5000/api/reject', { token, user: username, plate: liscensePlate });
+            const generatedVehicles = await axios.post('/api/reject', { token, user: username, plate: liscensePlate });
             window.location.reload();
         } catch (error) {
             if (error.response.status === 404) {

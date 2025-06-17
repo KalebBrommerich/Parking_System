@@ -29,7 +29,7 @@ const EditCarPage = () => {
         const token = sessionStorage.getItem('token');
 
         try {
-            const editCar = await axios.post('http://199.17.162.16:5000/api/update', { token, make, model, color, plate, state, originalLiscense: data.plate });
+            const editCar = await axios.post('/api/update', { token, make, model, color, plate, state, originalLiscense: data.plate });
             console.log(editCar);
             navigate('/');
         } catch (error) {

@@ -27,7 +27,7 @@ const AddCarPage = () => {
         const token = sessionStorage.getItem('token');
 
         try {
-            const addCar = await axios.post('http://199.17.162.16:5000/api/add', { token, make, model, color, plate, state, permitNum });
+            const addCar = await axios.post('/api/add', { token, make, model, color, plate, state, permitNum });
             console.log(addCar);
             navigate('/');
         } catch (error) {

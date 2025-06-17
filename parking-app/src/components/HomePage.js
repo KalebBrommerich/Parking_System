@@ -33,7 +33,7 @@ const HomePage = () => {
         //returns JSON in format pending <space> accepted <space> rejected
 
         try {
-            let generatedVehicles = await axios.post('http://199.17.162.16:5000/api/genCars', { token });
+            let generatedVehicles = await axios.post('/api/genCars', { token });
             console.log(typeof(generatedVehicles)+"data" +generatedVehicles.data)
             let vehicles = [];
             JSON.parse(generatedVehicles.data).forEach(vehicle => {

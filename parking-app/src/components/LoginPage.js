@@ -23,7 +23,7 @@ const LoginPage = () => {
             const password = document.getElementById('password').value;
             //console.log(username+ " "+ password)
             //Don't know how to not use 199.17.162.16, will need to change this eventually
-            const response = await axios.post('http://199.17.162.16:5000/api/login', { username, password });
+            const response = await axios.post('/api/login', { username, password });
             //if login bad, it will give error code 401. idk how to handle that for now
             const token = response.data.token;
 

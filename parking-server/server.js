@@ -10,7 +10,7 @@ const app = express();
 const path = require('path');
 const router = express.Router();
 const bodyParser = require('body-parser');
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8000;
 const login = require('./server/login');
 const genCars = require('./server/generateCars');
 const genCarsAdmin = require('./server/generateCarsAdmin');
@@ -40,6 +40,6 @@ app.use('/api', acceptReject);
 
 
 
-app.listen(PORT, '199.17.162.16', () => {
-    console.log(`Server running, listening at http://199.17.162.16:${PORT}`)
+app.listen(PORT, () => {
+    console.log(`Server running, listening at ${PORT}`)
 });

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const nodemailer = require('nodemailer')
 const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -13,13 +13,13 @@ const transporter = nodemailer.createTransport({
 
 async function sendEmail(toEmail, subject, text){
     try{
-        let info = await transporter.sendMail({
-            from: 'Billybob Joe',
-            to: toEmail,
-            subject: subject,
-            text: text
-        });
-        console.log('Email sent: ' + info.response);
+        // let info = await transporter.sendMail({
+        //     from: 'Billybob Joe',
+        //     to: toEmail,
+        //     subject: subject,
+        //     text: text
+        // });
+        console.log('Email sent: ' );
         return true;
     } catch(error){
         console.error('Error sending email: ' ,error);
